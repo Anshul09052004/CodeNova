@@ -1,0 +1,11 @@
+import express from "express";
+import protect from "../Middleware/auth.middleware.js";
+import { createProject, deleteProject, getProjectById, getProjects, toggleStarProject } from "../Controllers/project.controller.js";
+const router = express.Router();
+router.post("/createProject", createProject);
+router.get("/getProjects", protect, getProjects);
+router.get("/:id", protect, getProjectById);
+router.get("/starred", protect, toggleStarProject);
+router.patch("/:id", protect, toggleStarProject);
+router.delete("/:id", protect, deleteProject);
+export default router;
